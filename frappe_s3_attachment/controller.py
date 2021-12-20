@@ -31,12 +31,14 @@ class S3Operations(object):
                 'http': 'http://proxy.aliyuncs.com',
                 'https': 'https://proxy.aliyuncs.com'
             }
-            self.S3_CLIENT = boto3.client(
-                's3',
+            my_config = Config(
+                region_name=self.s3_settings_doc.region_name,
+                signature_version='v4',
+                proxies=proxy_definitions,
                 aws_access_key_id=self.s3_settings_doc.aws_key,
-                aws_secret_access_key=self.s3_settings_doc.aws_secret,
-                endpoint_url='https://oss-cn-shanghai.aliyuncs.com'
+                aws_secret_access_key=self.s3_settings_doc.aws_secret
             )
+            self.S3_CLIENT = boto3.client('s3',my_config)
         else:
             self.S3_CLIENT = boto3.client('s3')
         self.BUCKET = self.s3_settings_doc.bucket_name
