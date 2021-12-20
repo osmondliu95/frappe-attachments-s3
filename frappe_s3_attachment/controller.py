@@ -11,6 +11,7 @@ import magic
 import frappe
 
 from botocore.exceptions import ClientError
+from botocore.config import Config
 
 class S3Operations(object):
 
