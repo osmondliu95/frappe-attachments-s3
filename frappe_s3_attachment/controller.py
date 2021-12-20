@@ -35,9 +35,7 @@ class S3Operations(object):
                 's3',
                 aws_access_key_id=self.s3_settings_doc.aws_key,
                 aws_secret_access_key=self.s3_settings_doc.aws_secret,
-                region_name=self.s3_settings_doc.region_name,
-                signature_version='v4',
-                proxies=proxy_definitions
+                endpoint_url='https://oss-cn-shanghai.aliyuncs.com'
             )
         else:
             self.S3_CLIENT = boto3.client('s3')
