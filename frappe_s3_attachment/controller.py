@@ -27,12 +27,16 @@ class S3Operations(object):
             self.s3_settings_doc.aws_key and
             self.s3_settings_doc.aws_secret
         ):
+            proxy_definitions = {
+                'http': 'http://proxy.aliyuncs.com',
+                'https': 'https://proxy.aliyuncs.com'
+            }
             self.S3_CLIENT = boto3.client(
                 's3',
                 aws_access_key_id=self.s3_settings_doc.aws_key,
                 aws_secret_access_key=self.s3_settings_doc.aws_secret,
                 region_name=self.s3_settings_doc.region_name,
-                proxies='https://proxy.aliyuncs.com'
+                proxies=proxy_definitions
             )
         else:
             self.S3_CLIENT = boto3.client('s3')
