@@ -32,7 +32,7 @@ class S3Operations(object):
                                            region_name=self.s3_settings_doc.region_name,
                                            aws_access_key_id=self.s3_settings_doc.aws_key,
                                            aws_secret_access_key=self.s3_settings_doc.aws_secret,
-                                           endpoint_url='https://oss-cn-shanghai.aliyuncs.com',
+                                           endpoint_url='http://oss-cn-shanghai.aliyuncs.com',
                                            config=Config(s3={"addressing_style": "virtual"})
                                          )
         else:
