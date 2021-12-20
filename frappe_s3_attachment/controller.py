@@ -28,7 +28,7 @@ class S3Operations(object):
             self.s3_settings_doc.aws_key and
             self.s3_settings_doc.aws_secret
         ):
-            self.S3_CLIENT = boto3.client('OSS',
+            self.S3_CLIENT = boto3.client('s3',
                                            region_name=self.s3_settings_doc.region_name,
                                            aws_access_key_id=self.s3_settings_doc.aws_key,
                                            aws_secret_access_key=self.s3_settings_doc.aws_secret,
