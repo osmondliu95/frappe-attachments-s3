@@ -32,7 +32,7 @@ class S3Operations(object):
                                            region_name=self.s3_settings_doc.region_name,
                                            aws_access_key_id=self.s3_settings_doc.aws_key,
                                            aws_secret_access_key=self.s3_settings_doc.aws_secret,
-                                           endpoint_url='http://oss-cn-shanghai.aliyuncs.com',
+                                           endpoint_url=self.s3_settings_doc.region_name,
                                            config=Config(s3={"addressing_style": "virtual"})
                                          )
         else:
@@ -118,6 +118,7 @@ class S3Operations(object):
                     file_path, self.BUCKET, key,
                     ExtraArgs={
                         "ContentType": content_type,
+                        "ACL": 'public-read',
                         "Metadata": {
                             "ContentType": content_type,
                             "file_name": file_name
@@ -132,7 +133,7 @@ class S3Operations(object):
                         "ACL": 'public-read',
                         "Metadata": {
                             "ContentType": content_type,
-
+                             "file_name": file_name
                         }
                     }
                 )
